@@ -3,15 +3,20 @@ const mongoose = require('mongoose');
 const MessageSchema = mongoose.Schema({
   text: {
     type: String,
-    required: [true, 'Please provide your name'],
   },
   user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    type: String,
   },
-
+  time: {
+    type: String,
+  },
+  id: {
+    type: String,
+  },
   createdAt: {
     type: Date,
     default: Date.now,
   },
 });
+
+module.exports = mongoose.model('Message', MessageSchema);
