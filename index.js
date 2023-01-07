@@ -46,7 +46,8 @@ socketIO.on('connection', socket => {
     let cr = await ChatRoom.create({ id: generateID(), name });
     console.log(cr);
     chatRooms.unshift({ id: generateID(), name, messages: [] });
-    socket.emit('roomsList', cr);
+    let crs = await ChatRoom.find();
+    socket.emit('roomsList', crs);
   });
 
   socket.on('findRoom', async id => {
